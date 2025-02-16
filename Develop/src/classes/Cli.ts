@@ -11,8 +11,8 @@ class Cli {
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
 
-  // TODO: Update the constructor to accept Truck and Motorbike objects as well
-  constructor(vehicles: (Car)[]) {
+  // constructor to accept Truck and Motorbike and car objects
+  constructor(vehicles: Truck | Motorbike | (Car)[]) {
     this.vehicles = vehicles;
   }
 
