@@ -260,7 +260,7 @@ class Cli {
         );
         // push the motorbike to the vehicles array
         this.vehicles.push(motorbike);
-        // set the selectedVehicleVin to the vin of the motorbile
+        // set the selectedVehicleVin to the vin of the motorbike
         this.selectedVehicleVin = motorbike.vin;
         // perform actions on the motorbike
         this.performActions();
@@ -318,6 +318,8 @@ class Cli {
             'Reverse',
             'Select or create another vehicle',
             'Exit',
+            'Tow',
+            'Wheelie'
           ],
         },
       ])
@@ -379,6 +381,9 @@ class Cli {
               this.vehicles[i].reverse();
             }
           }
+        } else if (answers.action === 'Truck') {
+          this.findVehicleToTow(Truck);
+          return
         }
         // TODO: add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
         // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
