@@ -51,7 +51,7 @@ class Motorbike extends Vehicle {
     // Call the printDetails method of the parent class, Vehicle
     super.printDetails();
 
-    // Print details of the Car class
+    // Print details of the truck class
     console.log(`VIN: ${this.vin}`);
     console.log(`Color: ${this.color}`);
     console.log(`Make: ${this.make}`);
@@ -66,12 +66,6 @@ class Motorbike extends Vehicle {
     );
     console.log(
       `Wheel 2: ${this.wheels[1].getDiameter} inch with a ${this.wheels[1].getTireBrand} tire`
-    );
-    console.log(
-      `Wheel 3: ${this.wheels[2].getDiameter} inch with a ${this.wheels[2].getTireBrand} tire`
-    );
-    console.log(
-      `Wheel 4: ${this.wheels[3].getDiameter} inch with a ${this.wheels[3].getTireBrand} tire`
     );
   }
 }
