@@ -180,6 +180,7 @@ class Cli {
           parseInt(answers.year),
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
+          parseInt(answers.towingCapacity),
           []
         );
         // push the truck to the vehicles array
@@ -287,6 +288,13 @@ class Cli {
         // TODO: check if the selected vehicle is the truck
         // TODO: if it is, log that the truck cannot tow itself then perform actions on the truck to allow the user to select another action
         // TODO: if it is not, tow the selected vehicle then perform actions on the truck to allow the user to select another action
+        if (answers.vehicle === Truck) {
+          console.log('Truck cannot tow itself.')
+          return;
+        } else {
+          console.log(`Your ${answers.vehicle} has been towed.`)
+          return;
+        }
       });
   }
 
