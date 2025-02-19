@@ -7,12 +7,12 @@ import Wheel from "./Wheel.js";
 
 // define the Cli class to accept truck, motorbike, car
 class Cli {
-  vehicles: Truck | Motorbike | (Car)[];
+  vehicles: (Truck | Motorbike | Car)[];
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
 
   // constructor to accept Truck and Motorbike and car objects
-  constructor(vehicles: Truck | Motorbike | (Car)[]) {
+  constructor(vehicles: (Truck | Motorbike | Car)[]) {
     this.vehicles = vehicles;
   }
 
@@ -120,7 +120,12 @@ class Cli {
           parseInt(answers.year),
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
-          []
+          [
+            new Wheel(), 
+            new Wheel(), 
+            new Wheel(), 
+            new Wheel(), 
+          ]
         );
         // push the car to the vehicles array
         this.vehicles.push(car);
@@ -181,7 +186,12 @@ class Cli {
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
           parseInt(answers.towingCapacity),
-          []
+          [
+            new Wheel(), 
+            new Wheel(), 
+            new Wheel(), 
+            new Wheel(), 
+          ]
         );
         // push the truck to the vehicles array
         this.vehicles.push(truck);
@@ -256,11 +266,14 @@ class Cli {
           parseInt(answers.year),
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
-          []
+          [
+            new Wheel(), 
+            new Wheel(),
+          ]
         );
         // push the motorbike to the vehicles array
         this.vehicles.push(motorbike);
-        // set the selectedVehicleVin to the vin of the motorbile
+        // set the selectedVehicleVin to the vin of the motorbike
         this.selectedVehicleVin = motorbike.vin;
         // perform actions on the motorbike
         this.performActions();
@@ -269,7 +282,7 @@ class Cli {
 
   // method to find a vehicle to tow
   // TODO: add a parameter to accept a truck object
-  findVehicleToTow(): void {
+  findVehicleToTow(truck: Truck): void {
     inquirer
       .prompt([
         {
@@ -318,6 +331,8 @@ class Cli {
             'Reverse',
             'Select or create another vehicle',
             'Exit',
+            'Tow',
+            'Wheelie'
           ],
         },
       ])
@@ -379,8 +394,11 @@ class Cli {
               this.vehicles[i].reverse();
             }
           }
+          // TODO: add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
+        } else if (answers.action === 'Truck') {
+          this.findVehicleToTow();
+          return
         }
-        // TODO: add statements to perform the tow action only if the selected vehicle is a truck. Call the findVehicleToTow method to find a vehicle to tow and pass the selected truck as an argument. After calling the findVehicleToTow method, you will need to return to avoid instantly calling the performActions method again since findVehicleToTow is asynchronous.
         // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
         else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle

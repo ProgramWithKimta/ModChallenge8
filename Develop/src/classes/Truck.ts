@@ -6,7 +6,7 @@ import Wheel from './Wheel.js';
 import AbleToTow from '../interfaces/AbleToTow.js';
 
 // TODO: The Truck class should extend the Vehicle class and should implement the AbleToTow interface
-class Truck extends Vehicle {
+class Truck extends Vehicle implements AbleToTow {
   vin: string;
   color: string;
   make: string;
@@ -26,14 +26,14 @@ class Truck extends Vehicle {
     year: number,
     weight: number,
     topSpeed: number,
-    wheels: Wheel[],
     towingCapacity: number,
+    wheels: Wheel[],
   ) {
 
     // Call the constructor of the parent class, Vehicle
     super();
 
-    // Initialize properties of the Car class
+    // Initialize properties of the truck class
     this.vin = vin;
     this.color = color;
     this.make = make;
@@ -49,14 +49,22 @@ class Truck extends Vehicle {
     } else {
       this.wheels = wheels;
     }
+  }
 
     // TODO: Implement the tow method from the AbleToTow interface
-    // TODO: Get the make an model of the vehicle if it exists
-    // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
-    // TODO: If it is, log that the vehicle is being towed
-    // TODO: If it is not, log that the vehicle is too heavy to be towed
+    tow(vehicle: Truck | Motorbike | Car): void {
+      // TODO: Get the make and model of the vehicle if it exists
+      let vehicleType = 'vehicle';
+      if (vehicle.make && vehicle.model) {
+        vehicleType = `${vehicle.make} ${vehicle.model}`;
+      } 
+      // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
+      if (vehicle.weight <= this.towingCapacity) {
+        console.log(`${vehicleType} is being towed`);
+      } else {
+        console.log(`${vehicleType} is too heavy to be towed`);
+      }
     }
-  }
 
     // Override the printDetails method from the Vehicle class
     override printDetails(): void {
@@ -88,7 +96,6 @@ class Truck extends Vehicle {
       );
     }
   }
-}
 
 // Export the Truck class as the default export
 export default Truck;
