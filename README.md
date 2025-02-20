@@ -32,4 +32,4 @@ This project is licensed under MIT
 
 Questions? Contact Me! [knguyen@gmail.com](mailto:knguyen@gmail.com)
 
-Link to the walkthrough video: https://drive.google.com/file/d/1cDsCF-USYNa62-3oEcJgy7RILtDWIOQG/view
+Link to the walkthrough video: https://drive.google.com/file/d/1JoB4fSp4U2SMFNsJypk0I3iq4a733ZvV/view
